@@ -18,4 +18,4 @@ jobs:
         EOF
     - name: Penyalinan
       run: |
-        rclone sync "COPYFITRIANTO:" "FITRIANTO:" -P --drive-server-side-across-configs --max-age 24h --drive-use-trash=false
+        rclone del FITRIANTO: --drive-use-trash=false --rmdirs && rclone sync "COPYFITRIANTO:" "FITRIANTO:" -P --drive-server-side-across-configs --max-age 24h --drive-use-trash=false
