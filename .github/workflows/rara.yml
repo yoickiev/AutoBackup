@@ -18,4 +18,4 @@ jobs:
         EOF
     - name: Penyalinan
       run: |
-        rclone copy "3dr:" "4dr:" --drive-server-side-across-configs --max-age 24h
+        rclone copy "3dr:backup" "4dr:backup" --drive-server-side-across-configs --max-age 24h
