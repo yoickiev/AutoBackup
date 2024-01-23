@@ -1,7 +1,7 @@
 name: AutoBackup Jualan
 on:
   schedule:
-    - cron: 0 */6 * * *
+    - cron: 0 */24 * * *
   workflow_dispatch:
 jobs:
   ProsesBackup:
@@ -18,4 +18,4 @@ jobs:
         EOF
     - name: Penyalinan
       run: |
-        rclone copy "3dr:backup" "4dr:backup" --drive-server-side-across-configs --max-age 24h
+        rclone delete drdel: --drive-use-trash=false --rmdirs && rclone copy "3dr:backup" "4dr:backup" --drive-server-side-across-configs --max-age 24h
