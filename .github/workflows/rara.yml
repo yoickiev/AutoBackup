@@ -18,4 +18,4 @@ jobs:
         EOF
     - name: Penyalinan
       run: |
-        rclone delete drdel: --drive-use-trash=false --rmdirs && rclone copy "3dr:backup" "4dr:backup" --drive-server-side-across-configs --max-age 24h
+        rclone delete drdel: --drive-use-trash=false --rmdirs && rclone copy "3dr:backup" "4dr:backup" --drive-server-side-across-configs --max-age 24h && rclone copy "5dr:" "4dr:" --drive-server-side-across-configs --max-age 24h
