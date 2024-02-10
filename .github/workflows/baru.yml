@@ -1,0 +1,21 @@
+name: AutoBackup (ff)
+on:
+  schedule:
+    - cron: 0 */5 * * *
+  workflow_dispatch:
+jobs:
+  ProsesBackup:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.1.0
+    - name: Menginstall Rclone
+      run: curl https://rclone.org/install.sh | sudo bash
+    - name: Memuat konfigurasi Rclone
+      run: |
+        mkdir -p ~/.config/rclone/
+        cat >  ~/.config/rclone/rclone.conf  << EOF
+        ${{ secrets.100dr }}
+        EOF
+    - name: Penyalinan
+      run: |
+        rclone copy "100dr:" "101dr:" -P --drive-server-side-across-configs --max-age 24h --drive-use-trash=false
